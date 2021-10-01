@@ -1,0 +1,383 @@
+:root {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "pnum";
+  font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums;
+
+  --min-fs: 1.0625;
+  --max-fs: 1.25;
+  --min-vw: 20;
+  --max-vw: 65;
+
+  --min-fs-rem: var(--min-fs) * 1rem;
+  --max-fs-rem: var(--max-fs) * 1rem;
+  --min-vw-rem: var(--min-vw) * 1rem;
+
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+
+  font-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
+}
+
+img {
+  inline-size: 100%;
+  block-size: auto;
+  vertical-align: middle;
+}
+
+:where(h1, h2, h3, h4) {
+  --flow-margin: 2.5rem;
+  line-height: 1.125;
+}
+
+h1 {
+  --min-fs: 2.488;
+  --max-fs: 4.2;
+}
+
+h2 {
+  --min-fs: 2.074;
+  --max-fs: 3.157;
+}
+
+h3 {
+  --min-fs: 1.728;
+  --max-fs: 2.37;
+}
+
+h4 {
+  --min-fs: 1.44;
+  --max-fs: 1.78;
+}
+
+h5 {
+  line-height: 1.125;
+}
+
+p {
+  max-inline-size: 65ch;
+}
+
+code {
+  display: inline-block;
+  padding-inline: 0.5rem;
+  padding-block: 0.35rem 0.175rem;
+  line-height: 1;
+  font-size: 0.9em;
+  font-weight: 700;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
+  background: #2a2138;
+  color: #72f1b8;
+  border-radius: 8px;
+}
+
+header[role="banner"] {
+  background: hsl(263.8, 60%, 97%);
+  background: #f7df1d;
+  color: hsl(53 10% 20%);
+  padding-inline: max(50vw - 500px, 2rem);
+  padding-block: 2rem 4rem;
+
+  display: grid;
+  grid: auto / minmax(0, 1fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  isolation: isolate;
+  --svg-bg: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1392 1534' fill='none' width='100%' height='auto' preserveAspectRatio='none'><path d='M0 0H1392V1533.5C767 1435 0 1438 0 1438V0Z' fill='black'/></svg>")
+    left top / 100% 100%;
+  -webkit-mask: var(--svg-bg);
+  mask: var(--svg-bg);
+}
+
+header[role="banner"] picture {
+  z-index: -1;
+}
+
+header:not(body > *) > * + * {
+  margin-block-start: 0.75rem;
+}
+
+header[role="banner"] img {
+  /* inline-size: calc(100% + 2rem);
+  block-size: calc(100% + 6rem); */
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  /* margin: -2rem -2rem -4rem; */
+  margin-inline-start: 0;
+  object-fit: cover;
+  object-fit: contain;
+  object-position: 25%;
+  aspect-ratio: 1;
+  z-index: -1;
+  /* -webkit-mask: linear-gradient(to left, #0000, 15%, #000); */
+}
+
+header[role="banner"] h1 {
+  position: relative;
+  line-height: 1.125;
+  margin-inline-end: -50%;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #5000ca;
+  font-variation-settings: "wdth" 130, "wght" 950, "opsz" 27.5;
+  isolation: isolate;
+}
+
+header[role="banner"] h1::before {
+  content: "Javascript-øvelser";
+  position: absolute;
+  inset: 0;
+  transform: translate(6px, 6px);
+  z-index: -1;
+  background: repeating-linear-gradient(
+    -45deg,
+    #46386655 0 2px,
+    #5000ca00 0 3.9px
+  );
+  background-clip: border-box;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+@media (max-width: 500px) {
+  header[role="banner"] {
+    grid-template-columns: 1fr;
+  }
+  header[role="banner"] h1 {
+    margin: 0;
+    font-variation-settings: "wdth" 50, "wght" 800, "opsz" 17;
+  }
+  header[role="banner"] picture {
+    order: -1;
+  }
+  header[role="banner"] img {
+    /* inline-size: calc(100% + 4rem); */
+    block-size: revert;
+    margin-block-start: 0;
+    aspect-ratio: revert;
+    /* margin-inline-start: -2rem; */
+  }
+}
+
+main {
+  counter-reset: headings;
+}
+
+section {
+  display: grid;
+  padding: 10rem max(50vw - 500px, 2rem);
+  isolation: isolate;
+}
+
+section h4 {
+  counter-increment: headings;
+  position: relative;
+}
+
+section h4::before {
+  content: counter(headings);
+  color: #fff0;
+  -webkit-text-stroke: 8px #5000ca11;
+  font-size: 10em;
+  font-weight: 900;
+  text-align: end;
+  position: absolute;
+  inset: 50% -3rem 0 0;
+  line-height: 0.1;
+  z-index: -1;
+  will-change: transform;
+  transform: translateY(calc(var(--progress) * 100px));
+}
+
+section:nth-child(even) {
+  position: relative;
+}
+
+section:nth-child(2n)::before {
+  --mask: linear-gradient(to bottom, #000, 90%, #0000);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: hsl(263.8, 30%, 98%);
+  z-index: -1;
+  transform: skewY(-5deg);
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+:is(section, .content) > * + * {
+  margin-block-start: var(--flow-margin, 1rem);
+}
+
+article {
+  display: grid;
+  grid: auto / repeat(
+      auto-fit,
+      minmax(clamp(20%, (30rem - 100%) * 999, 100%), 1fr)
+    );
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 2px dashed #5000ca;
+  border-radius: 12px;
+  background: #fff;
+}
+
+article > div {
+  outline: 1px solid #fb28a8;
+  outline-offset: -1px;
+  border: 0.75rem solid #fff0;
+  padding: 0.75rem 0.5rem 0.25rem;
+  position: relative;
+  isolation: isolate;
+}
+
+:is(article, .card) > * {
+  position: relative;
+}
+
+:is(.heading-box, .card) > * + * {
+  margin-top: 0.35rem;
+}
+
+:is(article, .card) > [class]::before,
+article h5[class]::before {
+  content: "." attr(class);
+  background: #fff;
+  border-radius: 0.1em;
+  font-weight: 600;
+  font-family: consolas, monaco, monospace-ui;
+  font-size: var(--before, 0.75em);
+  color: #fb28a8;
+  border: 1px solid #000;
+  line-height: 1;
+  padding: 0.2em 0.3em 0;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+
+article p {
+  --min-fs: 0.8;
+  --max-fs: 1;
+}
+
+article h5::before {
+  --before: 0.8rem;
+}
+
+button,
+header[role="banner"] a {
+  all: initial;
+  font: inherit;
+  position: relative;
+  justify-self: start;
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 6px;
+  cursor: pointer;
+  background: hsl(263.8, 100%, var(--l, 39.6%));
+  font-variation-settings: "wdth" 120, "wght" 750;
+  letter-spacing: 1px;
+  color: #fff;
+  user-select: none;
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+  margin-block-start: 1rem;
+  z-index: 1;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: -1rem 0 0 100%;
+  width: 2em;
+  height: 2.25em;
+  border: dashed #5000ca;
+  border-radius: 0 0 12px;
+  border-top-width: medium;
+  border-right-width: medium;
+  border-bottom-width: medium;
+  border-left-width: medium;
+  display: block;
+  border-width: 0 2px 2px 0;
+}
+
+button:hover,
+header[role="banner"] a:hover {
+  --l: 50%;
+}
+
+button:active,
+header[role="banner"] a:active {
+  --l: 35%;
+}
+
+/* custom classes */
+
+[class*="js-"] {
+  position: relative;
+  border: 0.75rem solid transparent;
+  background: linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fb28a8 0 0) border-box;
+}
+
+[class*="js-"]::after {
+  content: "✓";
+  font-weight: 900;
+  font-size: 1em;
+  color: #72f1b8;
+  display: block;
+  -webkit-text-stroke: 1px #000;
+  margin-inline-start: 0.5rem;
+}
+
+header[role="banner"] p {
+  font-variation-settings: "wght" 450, "opsz" 22.5;
+}
+
+header[role="banner"]::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  z-index: 1;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+  opacity: 0.6;
+  filter: url('data:image/svg+xml,\
+  <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="noise">\
+          <feTurbulence\
+            type="fractalNoise"\
+            baseFrequency=".8"\
+            numOctaves="4"\
+            stitchTiles="stitch"\
+          />\
+          <feColorMatrix type="saturate" values="0" />\
+        </filter>\
+      </svg>#noise');
+}
