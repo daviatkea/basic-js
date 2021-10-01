@@ -15,3 +15,21 @@ sections.forEach((section) => {
     },
   });
 });
+
+const articles = document.querySelectorAll("section article");
+
+articles.forEach((article) => {
+  const boxes = article.querySelectorAll("div");
+  gsap.from(boxes, {
+    y: 50,
+    opacity: 0,
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: article,
+      start: "top 80%",
+      end: "+=200",
+      toggleActions: "play none none reverse",
+      fastScrollEnd: true,
+    },
+  });
+});

@@ -369,8 +369,7 @@ header[role="banner"]::before {
   mix-blend-mode: luminosity;
   pointer-events: none;
   opacity: 0.6;
-  filter: url('data:image/svg+xml,\
-  <svg xmlns="http://www.w3.org/2000/svg">\
+  filter: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg">\
         <filter id="noise">\
           <feTurbulence\
             type="fractalNoise"\
