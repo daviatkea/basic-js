@@ -355,6 +355,21 @@ header[role="banner"] a:active {
   margin-inline-start: 0.5rem;
 }
 
+.ctas {
+  display: flex;
+  gap: 10px;
+}
+
+.ctas a[href^="https://"]
+{
+  display: grid;
+  place-content: center;
+  outline-color: #5000ca;
+  outline-offset: -2px;
+  color: #5000ca;
+  background: transparent;
+}
+
 header[role="banner"] p {
   font-variation-settings: "wght" 450, "opsz" 22.5;
 }
