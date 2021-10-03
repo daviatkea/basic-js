@@ -91,7 +91,8 @@ code {
 
 header[role="banner"] {
   background: hsl(263.8, 60%, 97%);
-  background: #f7df1d;
+  background: rgb(255, 226, 9);
+  background: color(display-p3 1 1 0.09);
   color: hsl(53 10% 20%);
   padding-inline: max(50vw - 500px, 2rem);
   padding-block: 2rem 4rem;
