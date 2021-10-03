@@ -78,15 +78,15 @@ p {
 
 code {
   display: inline-block;
-  padding-inline: 0.5rem;
-  padding-block: 0.35rem 0.175rem;
+  padding-inline: 0.25rem;
+  padding-block: 0.35rem;
   line-height: 1;
   font-size: 0.9em;
   font-weight: 700;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
   background: #2a2138;
   color: #72f1b8;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 header[role="banner"] {
