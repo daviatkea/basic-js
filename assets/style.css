@@ -76,6 +76,14 @@ p {
   max-inline-size: 65ch;
 }
 
+span {
+  font: inherit;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
 code {
   display: inline-block;
   padding-inline: 0.25rem;
