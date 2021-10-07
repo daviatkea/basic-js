@@ -10,7 +10,7 @@ sections.forEach((section) => {
       onUpdate: ({ trigger, progress }) =>
         trigger.style.setProperty(
           "--progress",
-          (progress.toFixed(4) - 0.5) * 2
+          (progress.toFixed(2) - 0.5) * 2
         ),
     },
   });

@@ -115,6 +115,8 @@ header[role="banner"] {
     left top / 100% 100%;
   -webkit-mask: var(--svg-bg);
   mask: var(--svg-bg);
+  will-change: transform;
+  contain: paint;
 }
 
 header[role="banner"] picture {
